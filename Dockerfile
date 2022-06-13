@@ -10,31 +10,6 @@ RUN docker-php-ext-install bcmath gd exif pcntl intl zip pdo pdo_mysql
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Download Microsoft SQL Server Prerequisites
-RUN curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.7.2.1-1_amd64.apk
-RUN curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.7.1.1-1_amd64.apk
-
-# Verify ODBC Signatures
-RUN curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.7.2.1-1_amd64.sig
-RUN curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.7.1.1-1_amd64.sig
-RUN curl https://packages.microsoft.com/keys/microsoft.asc  | gpg --import -
-RUN gpg --verify msodbcsql17_17.7.2.1-1_amd64.sig msodbcsql17_17.7.2.1-1_amd64.apk
-RUN gpg --verify mssql-tools_17.7.1.1-1_amd64.sig mssql-tools_17.7.1.1-1_amd64.apk
-
-# Install the ODBC packages
-RUN apk add --allow-untrusted msodbcsql17_17.7.2.1-1_amd64.apk
-RUN apk add --allow-untrusted mssql-tools_17.7.1.1-1_amd64.apk
-
-# Set mssql-tools ENV variable to the PATH
-ENV PATH "$PATH:/opt/mssql-tools/bin"
-RUN echo $PATH
-
-# Remove the ODBC packages
-RUN rm msodbcsql17_17.7.2.1-1_amd64.apk \
-    mssql-tools_17.7.1.1-1_amd64.apk \
-    msodbcsql17_17.7.2.1-1_amd64.sig \
-    mssql-tools_17.7.1.1-1_amd64.sig
-
 # Install unixodbc-dev required for pecl
 RUN apk add --allow-untrusted unixodbc-dev
 
