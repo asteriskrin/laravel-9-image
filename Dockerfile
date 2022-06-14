@@ -22,7 +22,7 @@ RUN apk --no-cache add nodejs
 RUN apk --no-cache add file 
 RUN apk --no-cache add imagemagick 
 RUN apk --no-cache add imagemagick-dev
-RUN rm /etc/nginx/conf.d/default.conf
+# RUN rm /etc/nginx/conf.d/default.conf
 
 # Install PHP extensions
 RUN docker-php-ext-install bcmath gd exif pcntl intl zip pdo pdo_mysql
