@@ -1,4 +1,4 @@
-FROM php:8.1.7-fpm-alpine3.16
+FROM php:8.0.5-fpm-alpine3.13
 
 # Add bash
 RUN apk add --no-cache bash
