@@ -4,7 +4,25 @@ FROM php:8.1.7-fpm-alpine3.16
 RUN apk add --no-cache bash
 
 # Install packages and remove default server definition
-RUN apk --no-cache add gnupg autoconf make g++ nginx supervisor zlib-dev libpng-dev icu-dev icu-libs librdkafka-dev git libzip-dev shadow nodejs nodejs-npm file imagemagick imagemagick-dev
+RUN apk --no-cache add gnupg 
+RUN apk --no-cache add autoconf 
+RUN apk --no-cache add make 
+RUN apk --no-cache add g++ 
+RUN apk --no-cache add nginx 
+RUN apk --no-cache add supervisor 
+RUN apk --no-cache add zlib-dev 
+RUN apk --no-cache add libpng-dev 
+RUN apk --no-cache add icu-dev 
+RUN apk --no-cache add icu-libs 
+RUN apk --no-cache add librdkafka-dev 
+RUN apk --no-cache add git 
+RUN apk --no-cache add libzip-dev 
+RUN apk --no-cache add shadow 
+RUN apk --no-cache add nodejs 
+RUN apk --no-cache add nodejs-npm 
+RUN apk --no-cache add file 
+RUN apk --no-cache add imagemagick 
+RUN apk --no-cache add imagemagick-dev
 RUN rm /etc/nginx/conf.d/default.conf
 
 # Install PHP extensions
