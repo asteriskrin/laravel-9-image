@@ -18,8 +18,7 @@ RUN apk --no-cache add librdkafka-dev
 RUN apk --no-cache add git 
 RUN apk --no-cache add libzip-dev 
 RUN apk --no-cache add shadow 
-RUN apk --no-cache add nodejs 
-RUN apk --no-cache add nodejs-npm 
+RUN apk --no-cache add nodejs
 RUN apk --no-cache add file 
 RUN apk --no-cache add imagemagick 
 RUN apk --no-cache add imagemagick-dev
