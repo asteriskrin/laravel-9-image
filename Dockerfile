@@ -1,11 +1,11 @@
-FROM php:8.0.5-fpm-alpine3.13
+FROM php:8.1.7-fpm-alpine3.16
 
 # Add bash
 RUN apk add --no-cache bash
 
 # Install packages and remove default server definition
-RUN apk --no-cache add gnupg autoconf make g++ nginx supervisor zlib-dev libpng-dev icu-dev icu-libs librdkafka-dev git libzip-dev shadow nodejs nodejs-npm file imagemagick imagemagick-dev && \
-    rm /etc/nginx/conf.d/default.conf
+RUN apk --no-cache add gnupg autoconf make g++ nginx supervisor zlib-dev libpng-dev icu-dev icu-libs librdkafka-dev git libzip-dev shadow nodejs nodejs-npm file imagemagick imagemagick-dev
+RUN rm /etc/nginx/conf.d/default.conf
 
 # Install PHP extensions
 RUN docker-php-ext-install bcmath gd exif pcntl intl zip pdo pdo_mysql
